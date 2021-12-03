@@ -8,7 +8,8 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
-
+use common\models\NbaTeam;
+use yii\db\ActiveQuery;
 /**
  * Site controller
  */
@@ -62,7 +63,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $team = NbaTeam::find();
+        $query = $team->all();
+        return $this->render('index', ['query' => $query]);
     }
 
     /**
@@ -101,4 +104,5 @@ class SiteController extends Controller
 
         return $this->goHome();
     }
+
 }
