@@ -3,7 +3,7 @@
 namespace common\models;
 
 use Yii;
-
+use yii\behaviors\SluggableBehavior;
 /**
  * This is the model class for table "nba_team".
  *
@@ -47,7 +47,16 @@ class NbaTeam extends \yii\db\ActiveRecord
             'slug' => 'Slug',
         ];
     }
-
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => SluggableBehavior::class,
+                'attribute' => 'team_name',
+                'slugAttribute' => 'slug',
+            ],
+        ];
+    }
     /**
      * Gets query for [[EventTeamAssignments]].
      *

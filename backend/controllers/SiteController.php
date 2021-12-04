@@ -63,9 +63,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $team = NbaTeam::find();
-        $query = $team->all();
-        return $this->render('index', ['query' => $query]);
+
+
+        return $this->render('index');
     }
 
     /**
